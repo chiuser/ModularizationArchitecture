@@ -256,7 +256,7 @@ public class RouterRequest {
             return target;
         } else {
             if (retryTime < 5) {
-                return obtain(context, retryTime++);
+                return obtain(context, ++retryTime);
             } else {
                 return new RouterRequest(context);
             }

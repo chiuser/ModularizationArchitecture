@@ -100,20 +100,18 @@ public abstract class MaApplication extends Application {
 
     private void instantiateLogic() {
         if (null != mLogicList && mLogicList.size() > 0) {
-            if (null != mLogicList && mLogicList.size() > 0) {
-                Collections.sort(mLogicList);
-                for (PriorityLogicWrapper priorityLogicWrapper : mLogicList) {
-                    if (null != priorityLogicWrapper) {
-                        try {
-                            priorityLogicWrapper.instance = priorityLogicWrapper.logicClass.newInstance();
-                        } catch (InstantiationException e) {
-                            e.printStackTrace();
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                        if (null != priorityLogicWrapper.instance) {
-                            priorityLogicWrapper.instance.setApplication(this);
-                        }
+            Collections.sort(mLogicList);
+            for (PriorityLogicWrapper priorityLogicWrapper : mLogicList) {
+                if (null != priorityLogicWrapper) {
+                    try {
+                        priorityLogicWrapper.instance = priorityLogicWrapper.logicClass.newInstance();
+                    } catch (InstantiationException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    if (null != priorityLogicWrapper.instance) {
+                        priorityLogicWrapper.instance.setApplication(this);
                     }
                 }
             }

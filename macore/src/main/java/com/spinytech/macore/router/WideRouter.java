@@ -99,6 +99,11 @@ public class WideRouter {
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
+                } else {
+                    mLocalRouterAIDLMap.remove(domain);
+                    mLocalRouterConnectionMap.remove(domain);
+                    mLocalRouterAIDLMap.put(domain, mLocalRouterAIDL);
+                    mLocalRouterConnectionMap.put(domain, this);
                 }
             }
 
